@@ -9,6 +9,7 @@ export interface GIF {
   url: string
   images: {
     fixed_height: Images
+    fixed_width: Images
     original: Images
   }
 }

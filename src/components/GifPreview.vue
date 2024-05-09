@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { GIF } from '@/api/giphy'
+import { computed } from 'vue'
 
 export interface GifPreviewProps {
   gif: GIF
@@ -17,3 +18,5 @@ function previewClicked() {
 <template>
   <img :src="gif.images.fixed_height.url" @click="previewClicked()" />
 </template>
+
+<style scoped></style>

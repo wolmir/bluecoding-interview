@@ -53,7 +53,7 @@ export const useGiphySearchStore = defineStore('giphy-search', () => {
     searchResults.value.data.push(...results.data)
   }
 
-  function openLightbox(gifIndex: number) {
+  async function openLightbox(gifIndex: number) {
     const currentGifs = searchResults.value.data
 
     if (currentGifs[gifIndex]) {
@@ -82,8 +82,11 @@ export const useGiphySearchStore = defineStore('giphy-search', () => {
     lightbox.value.open = false
   }
 
-  function lightboxNextGif() {
+  async function lightboxNextGif() {
     if (lightbox.value.currentIndex !== null) {
+      if (lightbox.value.next === null) {
+        await loadMore()
+      }
       openLightbox(lightbox.value.currentIndex + 1)
     }
   }

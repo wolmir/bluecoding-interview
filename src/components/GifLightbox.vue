@@ -8,13 +8,13 @@ const store = useGiphySearchStore()
   <div class="backdrop" v-if="store.lightbox.open" @click="store.closeLightbox()">
     <div class="content-container">
       <div>
-        <button @click.stop="store.lightboxPreviousGif()">Previous</button>
+        <button class="nav-button" @click.stop="store.lightboxPreviousGif()">Previous</button>
       </div>
       <div v-if="store.lightbox.current">
         <img :src="store.lightbox.current.images.original.url" />
       </div>
       <div>
-        <button @click.stop="store.lightboxNextGif()">Next</button>
+        <button class="nav-button" @click.stop="store.lightboxNextGif()">Next</button>
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@ const store = useGiphySearchStore()
 
 <style scoped>
 div.backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -43,6 +43,13 @@ div.backdrop {
     margin-right: 32px;
     max-width: 80vw;
     max-height: 80vh;
+  }
+
+  .nav-button {
+    width: 100px;
+    padding: 8px;
+    font-size: 1.3em;
+    background-color: lightgray;
   }
 }
 </style>
